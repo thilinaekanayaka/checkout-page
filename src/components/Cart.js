@@ -13,7 +13,7 @@ const Cart = (props) => {
               <tr>
                 <th>Item Name</th>
                 <th>Quantity</th>
-                <th>Unit Price</th>
+                <th>Price</th>
               </tr>
             </thead>
             <tbody>
@@ -22,7 +22,11 @@ const Cart = (props) => {
                   return <tr key={item.id}>
                     <td>{item.name}</td>
                     <td>{item.itemCount}</td>
-                    <td>{item.price}</td>
+                    {
+                      !item.offer ?
+                        <td>{item.price * item.itemCount}</td> :
+                        <td>offer</td>
+                    }
                   </tr>
                 })
               }
