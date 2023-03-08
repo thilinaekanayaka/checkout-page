@@ -64,12 +64,18 @@ const App = () => {
 
   const removeItem = id => {
     const itemInCart = cart.find(item => item.id === id)
-    console.log('item removed', itemInCart)
-    // if (!itemIndexInCart) {
-    //   console.log('item removed from cart if')
-    // } else {
-    //   console.log('item removed from cart else')
-    // }
+    if (itemInCart) {
+      if (itemInCart.itemCount > 1) {
+        const itemIndexInCart = cart.findIndex(item => item.id === id)
+        const updatedItem = Object.assign({}, cart[itemIndexInCart]);
+        updatedItem.itemCount = updatedItem.itemCount - 1
+        const newCart = cart.slice()
+        newCart[itemIndexInCart] = updatedItem
+        setCartItems(newCart)
+      } else {
+        
+      }
+    }
   }
 
   return (
