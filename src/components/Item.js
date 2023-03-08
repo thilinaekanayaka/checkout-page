@@ -10,6 +10,7 @@ const Item = (props) => {
         <div className="offer">Offer: {props.offer}</div>
       }
       <div className="add"><button className="add-button" onClick={() => props.addItem(props.id)}>Add to cart</button></div>
+      <div className="add"><button className="add-button" onClick={() => props.removeItem(props.id)}>Remove from cart</button></div>
       <hr />
     </Fragment>
   )

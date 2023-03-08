@@ -48,7 +48,7 @@ const App = () => {
 
   const addItem = id => {
     const itemIndexInCart = cart.findIndex(item => item.id === id)
-    if (!itemIndexInCart) {
+    if (itemIndexInCart !== -1) {
       const updatedItem = Object.assign({}, cart[itemIndexInCart]);
       updatedItem.itemCount = updatedItem.itemCount + 1
       const newCart = cart.slice()
@@ -63,7 +63,13 @@ const App = () => {
   }
 
   const removeItem = id => {
-    console.log('item removed from cart :', id)
+    const itemInCart = cart.find(item => item.id === id)
+    console.log('item removed', itemInCart)
+    // if (!itemIndexInCart) {
+    //   console.log('item removed from cart if')
+    // } else {
+    //   console.log('item removed from cart else')
+    // }
   }
 
   return (
@@ -73,6 +79,14 @@ const App = () => {
         name={`Kone`}
         price={3488.99}
         addItem={addItem}
+        removeItem={removeItem}
+      />
+      <Item
+        id={2}
+        name={`Ironhide Cartridge`}
+        price={529.99}
+        addItem={addItem}
+        removeItem={removeItem}
       />
       <Cart cart={cart} />
     </Fragment>
