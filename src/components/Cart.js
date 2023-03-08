@@ -9,9 +9,9 @@ const Cart = (props) => {
   return (
     <Fragment>
       {props.cart.length === 0 ?
-        <div className="card-heading">- cart empty -</div> :
+        <div data-testid="cart-heading" className="cart-heading">- cart empty -</div> :
         <div>
-          <label className="card-heading">Shopping Cart Summary</label>
+          <label data-testid="cart-heading" className="cart-heading">Shopping Cart Summary</label>
           <table>
             <thead>
               <tr>

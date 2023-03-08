@@ -9,8 +9,8 @@ const Item = (props) => {
       {props.offer && props.offer != `` &&
         <div className="offer">Offer: {props.offer.offerText}</div>
       }
-      <div className="add"><button className="add-button" onClick={() => props.addItem(props.id)}>Add to cart</button></div>
-      <div className="add"><button className="add-button" onClick={() => props.removeItem(props.id)}>Remove from cart</button></div>
+      <div className="add"><button data-testid="add-button" className="add-button" onClick={() => props.addItem(props.id)}>Add to cart</button></div>
+      <div className="remove"><button data-testid="remove-button" className="remove-button" onClick={() => props.removeItem(props.id)}>Remove from cart</button></div>
       <hr />
     </Fragment>
   )
