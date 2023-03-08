@@ -1,13 +1,16 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { Fragment } from "react";
 import './Item.css';
 
 const Item = (props) => {
   return (
     <Fragment>
-      <div>{props.name}</div>
-      <div>RM {props.price}</div>
-      <div>Offer: {props.offer}</div>
-      <div><button onClick={() => props.addItem(props.id)}>Add to cart</button></div>
+      <div className="name">{props.name}</div>
+      <div className="price">RM {props.price}</div>
+      {props.offer && props.offer != `` &&
+        <div className="offer">Offer: {props.offer}</div>
+      }
+      <div className="add"><button className="add-button" onClick={() => props.addItem(props.id)}>Add to cart</button></div>
+      <hr />
     </Fragment>
   )
 }

@@ -3,8 +3,12 @@ import './App.css';
 import Item from './components/Item';
 
 const App = () => {
-  const addItem = (id) => {
+  const addItem = id => {
     console.log('item added to cart :', id)
+  }
+
+  const removeItem = id => {
+    console.log('item removed from cart :', id)
   }
 
   return (
