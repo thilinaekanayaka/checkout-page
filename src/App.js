@@ -10,26 +10,16 @@ const offers = [
     offerText: `When 3 or more Kone is purchased, you’ll get a discount where the price is dropped to RM 2588.99 per unit`,
     offerLogic: (itemCount) => {
       if (itemCount >= 3) {
-        return [
-          {
-            itemCount,
-            price: 2588.99
-          }
-        ]
+        return itemCount * 2588.99
       }
     }
   },
   {
     offerID: 2,
-    offerText: `Buy 2 get 3rd free`,
+    offerText: `Buy 2 get and 3rd free`,
     offerLogic: (itemCount, price) => {
       if (itemCount >= 3) {
-        return [
-          {
-            itemCount: Math.ceil(itemCount / 3 * 2),
-            price
-          }
-        ]
+        return Math.ceil(itemCount / 3 * 2) * price
       }
     }
   }
@@ -73,7 +63,6 @@ const items = [
 
 const App = () => {
   const [cart, setCartItems] = useState([])
-  console.log('cart items', cart)
 
   const addItem = id => {
     const itemIndexInCart = cart.findIndex(item => item.id === id)
@@ -117,6 +106,7 @@ const App = () => {
             id={item.id}
             name={item.name}
             price={item.price}
+            offer={item.offer}
             addItem={addItem}
             removeItem={removeItem}
           />

@@ -2,8 +2,9 @@ import React, { Fragment } from "react";
 import './Cart.css';
 
 const Cart = (props) => {
-  // if (props.cart[0])
-  //   console.log('cart props', props.cart[0].offer.offerLogic(2))
+  const roundUpValues = (value) => {
+    return Math.round((value + Number.EPSILON) * 100) / 100
+  }
 
   return (
     <Fragment>
@@ -26,9 +27,14 @@ const Cart = (props) => {
                     <td>{item.name}</td>
                     <td>{item.itemCount}</td>
                     {
-                      !item.offer ?
-                        <td>{item.price * item.itemCount}</td> :
-                        <td>offer</td>
+                      !item.offer &&
+                      <td>{roundUpValues(item.price * item.itemCount)}</td>
+                    }
+                    {item.offer && !item.offer.offerLogic(item.itemCount, item.price) &&
+                      <td>{roundUpValues(item.price * item.itemCount)}</td>
+                    }
+                    {item.offer && item.offer.offerLogic(item.itemCount, item.price) &&
+                      <td>{roundUpValues(item.offer.offerLogic(item.itemCount, item.price))}</td>
                     }
                   </tr>
                 })
