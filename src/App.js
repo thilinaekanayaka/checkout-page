@@ -22,11 +22,12 @@ const offers = [
   {
     offerID: 2,
     offerText: `Buy 2 get 3rd free`,
-    offerLogic: (itemCount) => {
+    offerLogic: (itemCount, price) => {
       if (itemCount >= 3) {
         return [
           {
-            itemCount: Math.ceil(itemCount / 3 * 2)
+            itemCount: Math.ceil(itemCount / 3 * 2),
+            price
           }
         ]
       }
@@ -40,13 +41,13 @@ const items = [
     id: 1,
     name: `Kone`,
     price: 3488.99,
-    offer: 1
+    offer: offers.find((offer) => offer.offerID === 1)
   },
   {
     id: 2,
     name: `Ironhide Cartridge`,
     price: 529.99,
-    offer: 2
+    offer: offers.find((offer) => offer.offerID === 2)
   },
   {
     id: 3,
@@ -77,7 +78,7 @@ const App = () => {
   const addItem = id => {
     const itemIndexInCart = cart.findIndex(item => item.id === id)
     if (itemIndexInCart !== -1) {
-      const updatedItem = Object.assign({}, cart[itemIndexInCart]);
+      const updatedItem = Object.assign({}, cart[itemIndexInCart])
       updatedItem.itemCount = updatedItem.itemCount + 1
       const newCart = cart.slice()
       newCart[itemIndexInCart] = updatedItem
@@ -95,7 +96,7 @@ const App = () => {
     if (itemInCart) {
       if (itemInCart.itemCount > 1) {
         const itemIndexInCart = cart.findIndex(item => item.id === id)
-        const updatedItem = Object.assign({}, cart[itemIndexInCart]);
+        const updatedItem = Object.assign({}, cart[itemIndexInCart])
         updatedItem.itemCount = updatedItem.itemCount - 1
         const newCart = cart.slice()
         newCart[itemIndexInCart] = updatedItem
