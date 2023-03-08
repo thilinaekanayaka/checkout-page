@@ -23,6 +23,24 @@ const items = [
     price: 3299.99,
     offerID: 0
   },
+  {
+    id: 4,
+    name: `Fox + Float`,
+    price: 66.00,
+    offerID: 0
+  },
+  {
+    id: 5,
+    name: `Shimano+ Derailuer`,
+    price: 67.60,
+    offerID: 0
+  },
+  {
+    id: 6,
+    name: `SANTA CRUZ`,
+    price: 185.50,
+    offerID: 0
+  },
 ]
 
 // Demo purposes only. Ideally should come from a backend API that sends a JSON of offer details.
@@ -33,14 +51,6 @@ const offers = [
     offerLogic: 0
   }
 ]
-
-// --- find
-// let itemDetails = items.find(item => item.id === 1);
-// console.log('itemDetails', itemDetails);
-
-// -- remove
-// const itemDetails = items.filter(item => item.id !== 2)
-// console.log('itemDetails', itemDetails);
 
 const App = () => {
   const [cart, setCartItems] = useState([])
@@ -73,7 +83,8 @@ const App = () => {
         newCart[itemIndexInCart] = updatedItem
         setCartItems(newCart)
       } else {
-
+        const newCart = cart.filter(item => item.id !== id)
+        setCartItems(newCart)
       }
     }
   }

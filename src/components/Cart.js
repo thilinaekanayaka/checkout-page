@@ -2,8 +2,6 @@ import React, { Fragment } from "react";
 import './Cart.css';
 
 const Cart = (props) => {
-  console.log('cart props', props.cart)
-
   return (
     <Fragment>
       {props.cart.length === 0 ?
