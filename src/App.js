@@ -73,27 +73,25 @@ const App = () => {
         newCart[itemIndexInCart] = updatedItem
         setCartItems(newCart)
       } else {
-        
+
       }
     }
   }
 
   return (
     <Fragment>
-      <Item
-        id={1}
-        name={`Kone`}
-        price={3488.99}
-        addItem={addItem}
-        removeItem={removeItem}
-      />
-      <Item
-        id={2}
-        name={`Ironhide Cartridge`}
-        price={529.99}
-        addItem={addItem}
-        removeItem={removeItem}
-      />
+      {
+        items.map(item => {
+          return <Item
+            key={item.id}
+            id={item.id}
+            name={item.name}
+            price={item.price}
+            addItem={addItem}
+            removeItem={removeItem}
+          />
+        })
+      }
       <Cart cart={cart} />
     </Fragment>
   );

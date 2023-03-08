@@ -1,0 +1,21 @@
+table {
+  border: 1px solid;
+  margin: 25px 10px;
+}
+
+th {
+  border: 1px solid;
+  border-collapse: collapse;
+  width: 300px;
+}
+
+td {
+  border: 1px solid;
+  width: 300px;
+}
+
+.card-heading {
+  font-size: 25px;
+  font-weight: 500;
+  padding: 10px;
+}
